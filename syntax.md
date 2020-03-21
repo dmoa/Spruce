@@ -14,11 +14,14 @@ for numbered points: (don't let more than 5 points)
 -- numbered point 3
 -- numbered point 4
 
+maybe remove numbered points?
+
 Images:
 
 image example.png
 lookup dog
 
 @link https://stan.xyz
+(or maybe you can just add the link idk)
 
 Notes: Probably just going to be text, nothing fancy
