@@ -1,5 +1,6 @@
 import sys
 import fileinput
+import urllib.request
 
 def get():
 
@@ -20,9 +21,16 @@ def get():
         if line == "":
             slides.append({})
         else:
+            # empty line -> new slide
             if slides[-1] == {}:
                 slides[-1].update( {"Title": line} )
                 slides[-1].update( {"Body": ""} )
+            # "@" -> image url
+            elif line[:2] == "@ ":
+                fileName = line[2:].replace("/", "").replace(".", "").replace(":","") + ".png"
+                print(fileName)
+                urllib.request.urlretrieve(line[2:], fileName)
+            # "-" -> bullet point
             else:
                 newBulletPoint = "-\t" + line[2:] + "\n"
                 slides[-1]["Body"] += newBulletPoint

@@ -1,5 +1,5 @@
 from pptx import Presentation
-from pptx.util import Inches, Pt
+from pptx.util import Inches
 
 def get(prsData):
     prs = Presentation()
