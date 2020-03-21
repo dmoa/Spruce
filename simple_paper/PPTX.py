@@ -13,7 +13,7 @@ def get(prsData):
     slide.shapes.title.text = prsData["Title"]
     slide.placeholders[1].text = prsData["Author"]
 
-    for slideData in prsData["Body_Slides"]:
+    for slideData in prsData["Body"]:
 
         slide = prs.slides.add_slide(bodyTemplate)
         slide.shapes.title.text = slideData["Title"]

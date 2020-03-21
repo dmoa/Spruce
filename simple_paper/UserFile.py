@@ -2,29 +2,29 @@ import sys
 import fileinput
 
 def get():
-    lineData = []
 
-    presentFile = sys.argv[1]
-    for line in fileinput.input(presentFile):
-        lineData.append(line.splitlines()[0])
+    userFilePath = sys.argv[1]
+    linesData = open(userFilePath).read().splitlines()
 
     fileData = {
-        "Title": lineData[0],
-        "Author": lineData[1],
-        "Body_Slides": []
+        "Title": linesData.pop(0),
+        "Author": linesData.pop(0),
+        "Body": []
     }
 
-    slides = fileData["Body_Slides"]
-    # lineData.pop()
-    for i in range(2, len(lineData)):
-        if lineData[i] == "":
+    slides = fileData["Body"]
+
+    for i in range( len(linesData) ):
+        line = linesData[i]
+
+        if line == "":
             slides.append({})
         else:
             if slides[-1] == {}:
-                slides[-1].update( {"Title": lineData[i]} )
+                slides[-1].update( {"Title": line} )
                 slides[-1].update( {"Body": ""} )
             else:
-                newBulletPoint = "-\t" + lineData[i][2:] + "\n"
+                newBulletPoint = "-\t" + line[2:] + "\n"
                 slides[-1]["Body"] += newBulletPoint
 
     return fileData
