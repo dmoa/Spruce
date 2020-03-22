@@ -1,6 +1,9 @@
 from pptx import Presentation
-from pptx.util import Inches
+from pptx.util import Inches, Emu
 import os
+from PIL import Image
+
+EMUS_PER_INCH = 914400
 
 def get(prsData):
     prs = Presentation()
@@ -26,8 +29,15 @@ def get(prsData):
         body.text = slideData["Body"]
 
         if slideData["Image"] != "":
-            left = Inches(4.5)
-            slide.shapes.add_picture(slideData["Image"], left, top, width = Inches(5))
+            im = Image.open( slideData["Image"] )
+            imgWidth, imgHeight = im.size
+            im.close()
+
+            _width = Inches(5) if imgWidth > imgHeight else Inches( 3 )
+            left = Inches(9.5 - _width / EMUS_PER_INCH)
+
+            slide.shapes.add_picture(slideData["Image"], left, top, width = _width)
+
             os.remove( slideData["Image"] )
 
     return prs
