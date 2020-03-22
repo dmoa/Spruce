@@ -25,3 +25,7 @@ lookup dog
 (or maybe you can just add the link idk)
 
 Notes: Probably just going to be text, nothing fancy
+
+
+
+Downloading images is very slow, I might use requests insteead of urllib
