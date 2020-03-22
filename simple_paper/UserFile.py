@@ -25,11 +25,14 @@ def get():
             if slides[-1] == {}:
                 slides[-1].update( {"Title": line} )
                 slides[-1].update( {"Body": ""} )
+                slides[-1].update( {"Image": ""} )
+
             # "@" -> image url
             elif line[:2] == "@ ":
                 fileName = line[2:].replace("/", "").replace(".", "").replace(":","") + ".png"
-                print(fileName)
                 urllib.request.urlretrieve(line[2:], fileName)
+                slides[-1].update( {"Image": fileName} )
+
             # "-" -> bullet point
             else:
                 newBulletPoint = "-\t" + line[2:] + "\n"

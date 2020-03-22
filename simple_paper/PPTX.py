@@ -1,5 +1,6 @@
 from pptx import Presentation
 from pptx.util import Inches
+import os
 
 def get(prsData):
     prs = Presentation()
@@ -21,7 +22,12 @@ def get(prsData):
         left = top = width = height = Inches(1)
         top = Inches(2)
         body = slide.shapes.add_textbox(left, top, width, height)
-        # print(slideData["Body"])
+
         body.text = slideData["Body"]
+
+        if slideData["Image"] != "":
+            left = Inches(4.5)
+            slide.shapes.add_picture(slideData["Image"], left, top, width = Inches(5))
+            os.remove( slideData["Image"] )
 
     return prs
