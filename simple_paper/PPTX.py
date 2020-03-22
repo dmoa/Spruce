@@ -1,5 +1,5 @@
 from pptx import Presentation
-from pptx.util import Inches, Emu
+from pptx.util import Inches
 import os
 from PIL import Image
 

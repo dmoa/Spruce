@@ -1,5 +1,4 @@
 import sys
-import fileinput
 import requests
 
 
