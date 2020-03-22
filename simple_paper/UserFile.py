@@ -18,25 +18,24 @@ def get():
     for i in range( len(linesData) ):
         line = linesData[i]
 
+        # "" -> new slide
         if line == "":
-            slides.append({})
-        else:
-            # empty line -> new slide
-            if slides[-1] == {}:
-                slides[-1].update( {"Title": line} )
-                slides[-1].update( {"Body": ""} )
-                slides[-1].update( {"Image": ""} )
+            slides.append({
+                "Title": linesData[i+1],
+                "Body": "",
+                "Image": ""
+            })
 
-            # "@" -> image url
-            elif line[:2] == "@ ":
-                fileName = line[2:].replace("/", "").replace(".", "").replace(":","") + ".png"
-                print("Downloading Image")
-                urllib.request.urlretrieve(line[2:], fileName)
-                slides[-1].update( {"Image": fileName} )
+        # "@" -> image url
+        elif line[:2] == "@ ":
+            fileName = line[2:].replace("/", "").replace(".", "").replace(":","") + ".png"
+            print("Downloading Image")
+            urllib.request.urlretrieve(line[2:], fileName)
+            slides[-1].update( {"Image": fileName} )
 
-            # "-" -> bullet point
-            else:
-                newBulletPoint = "-\t" + line[2:] + "\n"
-                slides[-1]["Body"] += newBulletPoint
+        # "-" -> bullet point
+        elif line[:2] == "- ":
+            newBulletPoint = "-\t" + line[2:] + "\n"
+            slides[-1]["Body"] += newBulletPoint
 
     return fileData
