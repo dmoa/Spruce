@@ -1,6 +1,10 @@
 import sys
 import fileinput
-import urllib.request
+import requests
+
+def download_image(url, filename):
+    r = requests.get(url)
+    with open(filename, 'wb') as f: f.write(r.content)
 
 def get():
 
@@ -29,8 +33,7 @@ def get():
         # "@" -> image url
         elif line[:2] == "@ ":
             fileName = line[2:].replace("/", "").replace(".", "").replace(":","") + ".png"
-            print("Downloading Image")
-            urllib.request.urlretrieve(line[2:], fileName)
+            download_image(line[2:], fileName)
             slides[-1].update( {"Image": fileName} )
 
         # "-" -> bullet point
