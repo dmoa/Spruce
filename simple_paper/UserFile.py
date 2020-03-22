@@ -2,9 +2,12 @@ import sys
 import fileinput
 import requests
 
+
 def download_image(url, filename):
     r = requests.get(url)
-    with open(filename, 'wb') as f: f.write(r.content)
+    with open(filename, 'wb') as f:
+        f.write(r.content)
+
 
 def get():
 
@@ -19,7 +22,7 @@ def get():
 
     slides = fileData["Body"]
 
-    for i in range( len(linesData) ):
+    for i in range(len(linesData)):
         line = linesData[i]
 
         # "" -> new slide
@@ -32,9 +35,10 @@ def get():
 
         # "@" -> image url
         elif line[:2] == "@ ":
-            fileName = line[2:].replace("/", "").replace(".", "").replace(":","") + ".png"
+            fileName = line[2:].replace("/", "").replace(".", "")
+            fileName = fileName.replace(":", "") + ".png"
             download_image(line[2:], fileName)
-            slides[-1].update( {"Image": fileName} )
+            slides[-1].update({"Image": fileName})
 
         # "-" -> bullet point
         elif line[:2] == "- ":

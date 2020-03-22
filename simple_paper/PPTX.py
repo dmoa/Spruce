@@ -5,13 +5,14 @@ from PIL import Image
 
 EMUS_PER_INCH = 914400
 
+
 def get(prsData):
     prs = Presentation()
 
     # layout for intro and conclusion slides
     titleTemplate = prs.slide_layouts[0]
     # layout for body slides
-    bodyTemplate =  prs.slide_layouts[5]
+    bodyTemplate = prs.slide_layouts[5]
 
     slide = prs.slides.add_slide(titleTemplate)
     slide.shapes.title.text = prsData["Title"]
@@ -29,15 +30,16 @@ def get(prsData):
         body.text = slideData["Body"]
 
         if slideData["Image"] != "":
-            im = Image.open( slideData["Image"] )
+            im = Image.open(slideData["Image"])
             imgWidth, imgHeight = im.size
             im.close()
 
-            _width = Inches(5) if imgWidth > imgHeight else Inches( 3 )
+            _width = Inches(5) if imgWidth > imgHeight else Inches(3)
             left = Inches(9.5 - _width / EMUS_PER_INCH)
 
-            slide.shapes.add_picture(slideData["Image"], left, top, width = _width)
+            slide.shapes.add_picture(slideData["Image"], left, top,
+                                     width=_width)
 
-            os.remove( slideData["Image"] )
+            os.remove(slideData["Image"])
 
     return prs
