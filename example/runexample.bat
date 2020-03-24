@@ -1,1 +1,1 @@
-python ../simple_paper/main.py example.sp
+python ../spruce/main.py example
