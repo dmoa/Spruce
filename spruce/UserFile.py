@@ -1,4 +1,5 @@
 import sys
+
 import requests
 
 
@@ -9,7 +10,6 @@ def download_image(url, filename):
 
 
 def get():
-
     userFilePath = sys.argv[1]
     linesData = open(userFilePath).read().splitlines()
 
@@ -27,7 +27,7 @@ def get():
         # "" -> new slide
         if line == "":
             slides.append({
-                "Title": linesData[i+1],
+                "Title": linesData[i + 1],
                 "Body": "",
                 "Image": ""
             })
