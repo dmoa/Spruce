@@ -44,4 +44,4 @@ def get():
             newBulletPoint = "-\t" + line[2:] + "\n"
             slides[-1]["Body"] += newBulletPoint
 
-    return fileData
+    return fileData, userFilePath

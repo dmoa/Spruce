@@ -1,6 +1,6 @@
 import PPTX
 import UserFile
 
-fileInfo = UserFile.get()
+fileInfo, fileName = UserFile.get()
 presentation = PPTX.get(fileInfo)
-presentation.save("test.pptx")
+presentation.save(fileName + ".pptx")
