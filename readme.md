@@ -7,7 +7,7 @@ Spruce is a program that lets you generate simple and concise presentations, as 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
 ```bash
-pip install spruce
+curl -s -L https://github.com/dmoa/Spruce/releases/download/v1.0/install.sh | bash
 ```
 
 ## Usage
