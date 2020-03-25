@@ -34,6 +34,7 @@ class Folder(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     parent_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    created = db.Column(db.DateTime, nullable=False)
 
 
 class Document(db.Model):
@@ -41,3 +42,4 @@ class Document(db.Model):
     content = db.Column(db.Text, nullable=False)
     folder_id = db.Column(db.Integer, db.ForeignKey("folder.id"))
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    created = db.Column(db.DateTime, nullable=False)
