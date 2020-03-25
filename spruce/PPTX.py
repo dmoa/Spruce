@@ -1,7 +1,8 @@
+import os
+
+from PIL import Image
 from pptx import Presentation
 from pptx.util import Inches
-import os
-from PIL import Image
 
 EMUS_PER_INCH = 914400
 
