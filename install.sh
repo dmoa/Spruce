@@ -7,8 +7,8 @@ git_clone() {
     cd spruce
 }
 
-python_pptx() {
-    pip install python-pptx
+install_dependencies() {
+    pip install -r requirements.txt
 }
 
 delete_script() {
@@ -21,7 +21,7 @@ if [ "$(uname)" = "Darwin" ]; then
     # Do something under Mac OS X platform
     "echo" "detected MacOS"
     git_clone
-    python_pptx
+    install_dependencies
     printf "%s\n" "alias spruce='python $INSTALL_PATH'/spruce/spruce/main.py" >> ~/.zshrc
     delete_script
     zsh
@@ -29,7 +29,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
     # Do something under GNU/Linux platform
     "echo" "detected Linux"
     git_clone
-    python_pptx
+    install_dependencies
     printf "%s\n" "alias spruce='python $INSTALL_PATH'/spruce/spruce/main.py" >> ~/.bashrc
     delete_script
     bash
@@ -37,7 +37,7 @@ elif [ "$(expr substr $(uname -s) 1 9)" = "CYGWIN_NT" ]; then
     # Do something under Windows NT platform
     "echo" "detected Windows (Cygwin)"
     git_clone
-    python_pptx
+    install_dependencies
     printf "%s\n" "alias spruce='python $INSTALL_PATH'/spruce/spruce/main.py" >> ~/.bashrc
     delete_script
     bash
