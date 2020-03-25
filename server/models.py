@@ -14,6 +14,25 @@ folder_editors = db.Table("folder_editor",
                           db.Column("user_id", db.Integer, db.ForeignKey("user.id")))
 
 
+class Document(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.Text, nullable=False)
+    folder_id = db.Column(db.Integer, db.ForeignKey("folder.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    editors = db.relationship("User", lazy="subquery", secondary=document_editors,
+                              backref=db.backref("document_editors", lazy=True))
+
+
+class Folder(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    parent_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    editors = db.relationship("User", lazy="subquery", secondary=folder_editors,
+                              backref=db.backref("folder_editors", lazy=True))
+
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, nullable=False)
@@ -48,18 +67,3 @@ class UserSchema(ma.SQLAlchemySchema):
 
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)
-
-
-class Folder(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    parent_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-
-
-class Document(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.Text, nullable=False)
-    folder_id = db.Column(db.Integer, db.ForeignKey("folder.id"))
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)

@@ -22,4 +22,6 @@ def create_app():
     ma.init_app(app)
     migrate.init_app(app, db)
     jwt_manager.init_app(app)
+    from server.auth import auth_blueprint
+    app.register_blueprint(auth_blueprint)
     return app
