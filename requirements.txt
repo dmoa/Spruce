@@ -1,3 +1,7 @@
 pillow
 python-pptx
 requests
+flask
+flask-jwt-extended
+flask-sqlalchemy
+flask-migrate
