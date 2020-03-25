@@ -2,7 +2,7 @@ from datetime import datetime
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from app import db
+from app import db, ma
 
 document_editors = db.Table("document_editor",
                             db.Column("document_id", db.Integer, db.ForeignKey("document.id")),
@@ -17,6 +17,7 @@ folder_editors = db.Table("folder_editor",
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, nullable=False)
+    email = db.Column(db.String, nullable=False)
     password_hash = db.Column(db.String, nullable=False)
     created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
@@ -30,6 +31,23 @@ class User(db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+
+class UserSchema(ma.SQLAlchemySchema):
+    class Meta:
+        model = User
+        include_fk = True
+
+    id = ma.auto_field()
+    username = ma.auto_field()
+    email = ma.auto_field()
+    created = ma.auto_field()
+    document_editorships = ma.auto_field()
+    folder_editorships = ma.auto_field()
+
+
+user_schema = UserSchema()
+users_schema = UserSchema(many=True)
 
 
 class Folder(db.Model):

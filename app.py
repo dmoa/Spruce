@@ -2,12 +2,14 @@ import os
 
 from flask import Flask
 from flask_jwt_extended import JWTManager
+from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 migrate = Migrate()
 jwt_manager = JWTManager()
+ma = Marshmallow()
 
 
 def create_app():
@@ -17,6 +19,7 @@ def create_app():
         "DATABASE_URL")
     app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
     db.init_app(app)
+    ma.init_app(app)
     migrate.init_app(app, db)
     jwt_manager.init_app(app)
     return app

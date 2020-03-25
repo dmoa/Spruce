@@ -5,3 +5,5 @@ flask
 flask-jwt-extended
 flask-sqlalchemy
 flask-migrate
+flask-marshmallow
+marshmallow-sqlalchemy
