@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from app import db
@@ -16,7 +18,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, nullable=False)
     password_hash = db.Column(db.String, nullable=False)
-    created = db.Column(db.DateTime)
+    created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     document_editorships = db.relationship("Document", lazy="subquery", secondary=document_editors,
                                            backref=db.backref("documents", lazy=True))
@@ -34,7 +36,7 @@ class Folder(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     parent_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    created = db.Column(db.DateTime, nullable=False)
+    created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
 
 class Document(db.Model):
@@ -42,4 +44,4 @@ class Document(db.Model):
     content = db.Column(db.Text, nullable=False)
     folder_id = db.Column(db.Integer, db.ForeignKey("folder.id"))
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    created = db.Column(db.DateTime, nullable=False)
+    created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
