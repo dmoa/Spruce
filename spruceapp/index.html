@@ -20,13 +20,21 @@
         #topbar {
             font-size: 20px;
             text-align: center;
-            margin-top: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            padding-top: 10px;
+            overflow: hidden;
+            background-color: white;
         }
 
         #window-buttons {
             position: fixed;
             top: 5px;
             right: 5px;
+        }
+
+        #title {
         }
 
         #window-buttons button {
@@ -44,15 +52,22 @@
             outline:none;
         }
 
+        #window-buttons button:hover {
+            opacity: 1
+        }
+
+        hr {
+            width: 80%;
+            margin-bottom: 0px;
+        }
+
         #main {
             margin: auto;
+            margin-top: 75px;
             width: 80%;
             font-size: 25px;
         }
 
-        #window-buttons button:hover {
-            opacity: 1
-        }
 
     </style>
 </head>
@@ -65,9 +80,9 @@
             <button id="max-btn">➕</button>
             <button id="close-btn">✖️</button>
         </div>
+        <hr>
     </div>
     <div id="main">
-        <hr>
         <div>
             <h4>Hello World!</h4>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rhoncus ipsum vitae est varius, vitae porta eros mollis. Fusce tincidunt justo non magna elementum, eget tristique orci tincidunt. Curabitur malesuada cursus ante. Suspendisse potenti. Sed sagittis, felis vel porta semper, urna sem mollis nisi, a tincidunt nulla nisl at justo. In id dolor orci. Praesent id tortor ante. Duis ullamcorper ipsum velit, at vestibulum enim faucibus non. Etiam consectetur sapien ultrices faucibus mattis. Nullam imperdiet arcu eget nunc sollicitudin, nec dictum ex varius. Maecenas luctus eros ut finibus bibendum. Maecenas lorem augue, euismod eget ante et, tincidunt vulputate mauris. Vestibulum viverra nec diam efficitur congue. Aliquam eu risus ligula.
