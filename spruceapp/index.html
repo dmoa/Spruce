@@ -5,14 +5,14 @@
     <meta charset="utf-8">
     <title>Spruce</title>
     <style>
-
         @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
         * {
             font-family: Roboto;
         }
 
-        html, body {
+        html,
+        body {
             padding: 0px;
             margin: 0px;
         }
@@ -47,12 +47,12 @@
             background-color: Transparent;
             color: transparent;
             text-shadow: 0 0 0 #121212;
-            font-size: 20px;
+            font-size: 30px;
             opacity: 0.8;
             transition: 0.3s;
             text-decoration: none;
             cursor: pointer;
-            outline:none;
+            outline: none;
         }
 
         #window-buttons button:hover {
@@ -69,9 +69,9 @@
             margin-top: 75px;
             width: 80%;
             font-size: 25px;
+            outline: none;
+            border: 0;
         }
-
-
     </style>
 </head>
 
@@ -85,22 +85,11 @@
         </div>
         <hr>
     </div>
-    <div id="main">
-        <div>
-            <h4>Hello World!</h4>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rhoncus ipsum vitae est varius, vitae porta eros mollis. Fusce tincidunt justo non magna elementum, eget tristique orci tincidunt. Curabitur malesuada cursus ante. Suspendisse potenti. Sed sagittis, felis vel porta semper, urna sem mollis nisi, a tincidunt nulla nisl at justo. In id dolor orci. Praesent id tortor ante. Duis ullamcorper ipsum velit, at vestibulum enim faucibus non. Etiam consectetur sapien ultrices faucibus mattis. Nullam imperdiet arcu eget nunc sollicitudin, nec dictum ex varius. Maecenas luctus eros ut finibus bibendum. Maecenas lorem augue, euismod eget ante et, tincidunt vulputate mauris. Vestibulum viverra nec diam efficitur congue. Aliquam eu risus ligula.
-
-Nullam consequat, diam eget placerat ultricies, orci mauris porttitor massa, vel viverra arcu quam non magna. Fusce vulputate non lacus vel finibus. Curabitur ac pellentesque arcu. Praesent fermentum elementum turpis, consectetur malesuada ex feugiat sed. In at justo ultrices, rhoncus mi ac, volutpat velit. Aliquam ultrices magna lorem, sed posuere lectus faucibus quis. Quisque sodales in neque et semper. Aenean nec magna a tortor dictum convallis vitae quis ligula. Nam libero dolor, ultrices quis molestie et, aliquam id odio. Proin iaculis leo vitae metus pellentesque, quis laoreet orci tempor. Nam posuere in sem nec tempus. Donec ornare, dui id rhoncus rutrum, odio diam blandit turpis, hendrerit dapibus massa ante nec libero. Vivamus condimentum sit amet metus vitae auctor.
-
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean eu condimentum mi, sit amet facilisis magna. Morbi cursus maximus suscipit. In consectetur sagittis arcu. Quisque vulputate, magna id venenatis fermentum, tortor tellus venenatis felis, eu pellentesque dolor arcu ac est. Aliquam eu metus quis lorem ullamcorper suscipit ut eu arcu. Integer a aliquet diam. Donec porta arcu neque, vel consectetur lectus euismod nec. Aliquam vulputate lacus arcu, egestas condimentum purus consequat vel. Aenean quis lacinia lectus.
-
-In blandit purus eu nibh tincidunt tempus. Vivamus ullamcorper efficitur imperdiet. Sed rutrum velit eget pretium suscipit. Etiam bibendum ante arcu, in mollis turpis ullamcorper a. Phasellus dignissim lacus nec erat rutrum, a fermentum nisi pharetra. In est tellus, dictum ac ante at, efficitur convallis urna. Aenean sed consequat nulla. Curabitur eleifend hendrerit pretium. Morbi ultrices bibendum ex non facilisis. Etiam ultrices maximus mi ac sodales. Cras euismod maximus auctor. Quisque sed aliquam lectus. Suspendisse non volutpat ante. Sed dictum arcu eget velit ultricies, vel tincidunt eros bibendum. Etiam felis neque, fermentum quis congue id, placerat sed felis.
-
-Pellentesque fringilla congue leo, sed fringilla erat. Pellentesque venenatis, diam vel lobortis tempus, velit nisl tincidunt magna, eget tempus libero turpis at tellus. Nam non magna at mauris efficitur ullamcorper ut ac odio. Pellentesque pulvinar tortor ac tristique laoreet. Sed vel facilisis velit. Nulla hendrerit, justo at ultrices elementum, massa enim dignissim nisi, efficitur pellentesque nunc neque non erat. Aenean euismod eros dui, ut vulputate turpis tempus at. Ut blandit nibh quis egestas lacinia. Vestibulum urna ipsum, vulputate et rutrum commodo, rhoncus laoreet augue. Maecenas non finibus nunc. Quisque maximus, augue quis vulputate lacinia, mi arcu eleifend sapien, sed fermentum quam magna eget nulla. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus commodo nulla sed ante iaculis varius. Vivamus ac pretium eros. Cras porta fringilla nibh ac sollicitudin.
-        </div>
+    <div id="main" contenteditable="true">
     </div>
 
     <script>
+
         (function () {
             // Retrieve remote BrowserWindow
             const {
@@ -139,6 +128,7 @@ Pellentesque fringilla congue leo, sed fringilla erat. Pellentesque venenatis, d
                 }
             };
         })();
+
     </script>
 </body>
 
