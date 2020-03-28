@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "electron": "^8.2.0"
+    "electron": "^8.2.0",
+    "electronmon": "^1.0.1",
+    "python-shell": "^1.0.8"
   }
 }
