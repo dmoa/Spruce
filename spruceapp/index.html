@@ -127,11 +127,10 @@
                 const { PythonShell } = require('python-shell');
 
                 // reading example text file in python
-                let pythonCode = 'import sys; print(repr(open("../example/example").read()));';
-                var text;
-                PythonShell.runString(pythonCode, null, function (err, results) {
+                let pythonCode = 'import sys; print((open("../example/example").read()));';
+                PythonShell.runString(pythonCode, null, function (err, text) {
                     if (err) throw err;
-                    text = results[0].substring(1, results[0].length - 1);
+                    text = text.join("\n");
                     // adding read text into text editor
                     document.getElementById("main").innerHTML = text;
                 });
