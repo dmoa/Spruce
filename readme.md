@@ -2,6 +2,8 @@
 
 Spruce is a program that lets you generate simple and concise presentations, as all presentations should be.
 
+## Attention: The terminal application is deprecated and will be replaced soon
+
 ## Installation
 
 You need the package manager [pip](https://pip.pypa.io/en/stable/) to install Spruce.
