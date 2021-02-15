@@ -6,10 +6,19 @@ def download_image(url, filename):
     with open(filename, 'wb') as f:
         f.write(r.content)
 
+def remove_comments(lines):
+    for i in range(len(lines)):
+        if lines[i] != "" and lines[i][0] == "#":
+            lines.pop(i)
+            remove_comments(lines)
+            break
 
 def get():
     userFilePath = sys.argv[1]
     linesData = open(userFilePath).read().splitlines()
+    remove_comments(linesData)
+
+    print(linesData)
 
     fileData = {
         "Title": linesData.pop(0),
