@@ -1,3 +1,5 @@
 __pycache__
 example.pptx
 spruceapp/node_modules/*
+*.bat
+spruce/*.pyc
