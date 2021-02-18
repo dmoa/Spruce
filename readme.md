@@ -1,8 +1,6 @@
 # Spruce
 
-Spruce is a program that lets you generate simple and concise presentations, as all presentations should be.
-
-## Attention: The terminal application is deprecated and will be replaced soon
+Spruce is a program that lets you generate simple and concise presentations.
 
 ## Installation
 
